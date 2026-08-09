@@ -38,24 +38,30 @@ const Navbar = () => {
           </Link>
 
           <Link
-            href="/rooms"
+            href="/specialrooms"
             className="font-medium text-gray-700 transition hover:text-blue-600"
           >
-            Rooms
+            Special Rooms
           </Link>
 
           <Link
-            href="/booked-rooms"
+            href="/allrooms"
+            className="font-medium text-gray-700 transition hover:text-blue-600"
+          >
+            All Rooms
+          </Link>
+          <Link
+            href="/bookedrooms"
             className="font-medium text-gray-700 transition hover:text-blue-600"
           >
             Booked Rooms
           </Link>
 
           <Link
-            href="/profile"
+            href="/dashbord"
             className="font-medium text-gray-700 transition hover:text-blue-600"
           >
-            Profile
+            Dash Board
           </Link>
         </div>
 
