@@ -15,7 +15,7 @@ const specialroomspage = async () => {
                 {
                     rooms.map(room => <RoomsCardView key={room._id} room={room} />)
                 }
-            </div>
+            </div> sss
         </div>
     );
 };
