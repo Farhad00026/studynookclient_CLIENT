@@ -10,12 +10,13 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+import { BsGoogle } from "react-icons/bs";
 
 export default function SignUpPage() {
     const onSubmit = async (e) => {
         e.preventDefault();
-         
-        
+
+
     };
 
     return (
@@ -86,6 +87,12 @@ export default function SignUpPage() {
                     </Button>
                     <Button type="reset" variant="secondary">
                         Reset
+                    </Button>
+                </div>
+                <div className="flex gap-2">
+                    <Button className="w-full text-center">
+                        <BsGoogle />
+                        GooGle SignIn
                     </Button>
                 </div>
             </Form>

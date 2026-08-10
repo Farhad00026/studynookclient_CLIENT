@@ -11,6 +11,7 @@ import {
     Separator,
     TextField,
 } from "@heroui/react";
+import Link from "next/link";
 import { redirect, useRouter } from "next/navigation";
 import { BsGoogle } from "react-icons/bs";
 
@@ -79,8 +80,8 @@ export default function loginPage() {
                 </div>
                 <div className="flex items-center gap-4 my-6">
                     <Separator className="flex-1" />
-                    <span className="text-sm text-gray-500 whitespace-nowrap">
-                        Or Sign in with Google
+                    <span className="text text-black whitespace-nowrap">
+                        <Link href={'/signup'}>Do not have an account? Register</Link>
                     </span>
                     <Separator className="flex-1" />
                 </div>
