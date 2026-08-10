@@ -45,6 +45,10 @@ const Navbar = () => {
       href: "/bookedrooms",
     },
     {
+      name: "Add Rooms",
+      href: "/addrooms",
+    },
+    {
       name: "Dashboard",
       href: "/dashbord",
     },
