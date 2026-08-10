@@ -139,7 +139,7 @@ const RoomsCardView = ({ room }) => {
 
         {/* View Details */}
         <Link
-          href={`/rooms/${_id}`}
+          href={`/allrooms/${_id}`}
           className="rounded-lg bg-cyan-500 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-cyan-600"
         >
           View Details

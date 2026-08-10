@@ -40,14 +40,14 @@ const Banner = () => {
             {/* Buttons */}
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="/rooms"
+                href="/specialrooms"
                 className="w-full rounded-lg bg-cyan-500 px-7 py-3.5 font-semibold text-white shadow-lg transition duration-300 hover:-translate-y-1 hover:bg-cyan-600 sm:w-auto"
               >
                 Explore Rooms
               </Link>
 
               <Link
-                href="/rooms"
+                href="/allrooms"
                 className="w-full rounded-lg border border-white/60 bg-white/20 px-7 py-3.5 font-semibold text-white shadow-lg backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-gray-900 sm:w-auto"
               >
                 View Available Rooms
