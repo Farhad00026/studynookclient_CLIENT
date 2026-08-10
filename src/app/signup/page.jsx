@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
     Button,
@@ -10,13 +11,34 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import { BsGoogle } from "react-icons/bs";
 
 export default function SignUpPage() {
+
+    const router = useRouter()
     const onSubmit = async (e) => {
         e.preventDefault();
+          try {
+            const formData = new FormData(e.currentTarget);
+            const user = Object.fromEntries(formData.entries());
 
+            const { email, password, name, image } = user;
 
+            const { data, error } = await authClient.signUp.email({
+                email,
+                password,
+                name,
+                image,
+            });
+
+            if (data) {
+                router.push('/')
+            }
+        } catch (err) {
+            console.error("Something went wrong:", err);
+        }
+        
     };
 
     return (
@@ -55,12 +77,12 @@ export default function SignUpPage() {
 
                 <TextField
                     isRequired
-                    minLength={8}
+                    minLength={6}
                     name="password"
                     type="password"
                     validate={(value) => {
-                        if (value.length < 8) {
-                            return "Password must be at least 8 characters";
+                        if (value.length < 6) {
+                            return "Password must be at least 6 characters";
                         }
                         if (!/[A-Z]/.test(value)) {
                             return "Password must contain at least one uppercase letter";

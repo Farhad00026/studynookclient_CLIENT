@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
     Button,
@@ -12,17 +13,29 @@ import {
     TextField,
 } from "@heroui/react";
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
 import { BsGoogle } from "react-icons/bs";
 
 export default function loginPage() {
     const onSubmit = async (e) => {
         e.preventDefault();
-        
+        try {
+            const formData = new FormData(e.currentTarget);
+            const user = Object.fromEntries(formData.entries());
+
+            const { email, password } = user;
+
+            const { data, error } = await authClient.signIn.email({
+                email,
+                password,
+                callbackURL: "/"
+            });
+
+        } catch (err) {
+            console.error("Something went wrong:", err);
+        }
 
     };
     
-
     return (
         <Card className="border mx-auto w-125 p-5 mt-5 mb-5">
             <h1 className="text-center text-2xl font-bold">Sign IN </h1>
