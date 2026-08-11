@@ -5,10 +5,12 @@ import Image from "next/image";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { EditRoomModal } from "./EditRoomModal";
+import { DeleteConfirmModal } from "./DeleteConfirmModal";
 
 export const TableCarddata = ({ room, onDelete }) => {
   const router = useRouter();
   const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
   const {
     _id,
@@ -32,6 +34,7 @@ export const TableCarddata = ({ room, onDelete }) => {
       onDelete?.(room);
       toast.success("Room deleted successfully!");
       router.refresh();
+      setIsDeleteOpen(false);
     } catch (err) {
       toast.error(err.message || "Something went wrong");
     }
@@ -105,7 +108,7 @@ export const TableCarddata = ({ room, onDelete }) => {
             </button>
 
             <button
-              onClick={handleDelete}
+              onClick={() => setIsDeleteOpen(true)}
               className="rounded-md bg-red-100 px-3 py-1 text-xs font-semibold text-red-600 hover:bg-red-200"
             >
               Delete
@@ -116,6 +119,14 @@ export const TableCarddata = ({ room, onDelete }) => {
 
       {isEditOpen && (
         <EditRoomModal room={room} onClose={() => setIsEditOpen(false)} />
+      )}
+
+      {isDeleteOpen && (
+        <DeleteConfirmModal
+          room={room}
+          onClose={() => setIsDeleteOpen(false)}
+          onConfirm={handleDelete}
+        />
       )}
     </>
   );
