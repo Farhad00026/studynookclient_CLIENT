@@ -3,6 +3,7 @@
 import { Button, Card } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import BookingCard from "./BookingCard";
 
 const Singlecardview = ({ room }) => {
   const {
@@ -77,95 +78,8 @@ const Singlecardview = ({ room }) => {
             </p>
           </div>
 
-          {/* ================= ROOM INFO ================= */}
-          <div className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <BookingCard room={room}></BookingCard>
 
-            {/* Floor */}
-            <div className="rounded-2xl bg-gray-50 p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
-                Location
-              </p>
-
-              <p className="mt-2 text-base font-semibold text-gray-900">
-                📍 {floor}
-              </p>
-            </div>
-
-            {/* Capacity */}
-            <div className="rounded-2xl bg-gray-50 p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-gray-500">
-                Capacity
-              </p>
-
-              <p className="mt-2 text-base font-semibold text-gray-900">
-                👥 {capacity?.min}–{capacity?.max} people
-              </p>
-            </div>
-
-            {/* Rate */}
-            <div className="rounded-2xl bg-cyan-50 p-4">
-              <p className="text-xs font-medium uppercase tracking-wide text-cyan-700">
-                Hourly Rate
-              </p>
-
-              <p className="mt-2 text-xl font-bold text-cyan-600">
-                ${hourlyRate}
-                <span className="text-sm font-normal text-gray-500">
-                  /hour
-                </span>
-              </p>
-            </div>
-          </div>
-
-          {/* ================= AMENITIES ================= */}
-          <div className="mt-8">
-            <h2 className="text-xl font-bold text-gray-900">
-              Amenities
-            </h2>
-
-            <div className="mt-4 flex flex-wrap gap-2">
-              {visibleAmenities.map((amenity, index) => (
-                <span
-                  key={index}
-                  className="rounded-full bg-cyan-50 px-4 py-2 text-sm font-medium text-cyan-700"
-                >
-                  ✓ {amenity}
-                </span>
-              ))}
-
-              {remainingAmenities > 0 && (
-                <span className="rounded-full bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600">
-                  +{remainingAmenities} more
-                </span>
-              )}
-            </div>
-          </div>
-
-          {/* ================= BOOKING AREA ================= */}
-          <div className="mt-8 flex flex-col gap-5 rounded-2xl border border-gray-200 bg-gray-50 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
-
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-full bg-green-500" />
-
-                <span className="text-sm font-semibold text-green-600">
-                  Available for Booking
-                </span>
-              </div>
-
-              <p className="mt-2 text-sm text-gray-500">
-                Reserve this room for your preferred date and time.
-              </p>
-            </div>
-
-            <Link href={`/booking/${_id}`} className="w-full sm:w-auto">
-              <Button
-                className="w-full bg-cyan-500 px-8 py-6 text-base font-bold text-white transition hover:bg-cyan-600 sm:w-auto"
-              >
-                Book Now
-              </Button>
-            </Link>
-          </div>
         </div>
       </Card>
     </section>
