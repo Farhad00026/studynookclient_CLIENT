@@ -19,7 +19,7 @@ export default function SignUpPage() {
     const router = useRouter()
     const onSubmit = async (e) => {
         e.preventDefault();
-          try {
+        try {
             const formData = new FormData(e.currentTarget);
             const user = Object.fromEntries(formData.entries());
 
@@ -38,7 +38,12 @@ export default function SignUpPage() {
         } catch (err) {
             console.error("Something went wrong:", err);
         }
-        
+
+    };
+    const handleGooglesignin = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        });
     };
 
     return (
@@ -112,7 +117,7 @@ export default function SignUpPage() {
                     </Button>
                 </div>
                 <div className="flex gap-2">
-                    <Button className="w-full text-center">
+                    <Button className="w-full text-center" onClick={handleGooglesignin}>
                         <BsGoogle />
                         GooGle SignIn
                     </Button>

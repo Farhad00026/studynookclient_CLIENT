@@ -35,7 +35,13 @@ export default function loginPage() {
         }
 
     };
-    
+    const handleGooglesignin = async () => {
+        await authClient.signIn.social({
+            provider: "google",
+        });
+    };
+
+
     return (
         <Card className="border mx-auto w-125 p-5 mt-5 mb-5">
             <h1 className="text-center text-2xl font-bold">Sign IN </h1>
@@ -99,7 +105,7 @@ export default function loginPage() {
                     <Separator className="flex-1" />
                 </div>
                 <div className="flex gap-2">
-                    <Button className="w-full text-center">
+                    <Button className="w-full text-center" onClick={handleGooglesignin}>
                         <BsGoogle />
                         GooGle SignIn
                     </Button>
