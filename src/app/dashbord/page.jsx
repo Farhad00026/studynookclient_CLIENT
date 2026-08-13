@@ -1,12 +1,18 @@
 import { AddRoomForm } from "@/Component/AddRoomForm";
 import { TableCarddata } from "@/Component/Tablerooms";
 import { Button } from "@heroui/react";
+import { auth } from "@/lib/auth";
+import { headers } from "next/headers";
 
 const DashboardPage = async () => {
+  const {token} = await auth.api.getToken({
+          headers:  await headers()
+      })
   const res = await fetch(`${process.env.NEXT_PUBLIC_SERVERSIDE_URI}/study`, {
     method: "GET",
     headers: {
       "content-type": "application/json",
+      "authorization":`Bearer ${token}`,
     },
     cache: "no-store",
   });

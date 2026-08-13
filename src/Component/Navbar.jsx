@@ -4,11 +4,13 @@ import { authClient } from "@/lib/auth-client";
 import { Avatar, Button } from "@heroui/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Navbar = () => {
   const { data: session } = authClient.useSession();
   const user = session?.user;
+  const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
@@ -18,6 +20,8 @@ const Navbar = () => {
       setIsLoggingOut(true);
 
       await authClient.signOut();
+
+      router.push('/');
 
       setIsOpen(false);
     } catch (error) {

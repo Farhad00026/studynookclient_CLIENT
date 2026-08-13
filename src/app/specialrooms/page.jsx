@@ -1,10 +1,11 @@
 import RoomsCardView from "@/Component/RoomsCardView";
 
 const specialroomspage = async () => {
+    
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVERSIDE_URI}/study/limit`, {
         method: "GET",
         headers: {
-            "content-type": "application/json"
+            "content-type":"application/json",
         }
     })
     const rooms = await res.json();

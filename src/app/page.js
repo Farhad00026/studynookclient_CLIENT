@@ -4,6 +4,7 @@ import Testimonials from "@/Component/Testimonials";
 import WhyChooseStudyNook from "@/Component/WhyChooseStudyNook";
 
 export default async function Home() {
+
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SERVERSIDE_URI}/study/limit`,
     {
